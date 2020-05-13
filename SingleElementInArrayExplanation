@@ -1,0 +1,58 @@
+Understanding the Question:
+The problem require basic understanding of how searching algorithms work. That is for a searching algorithm the conditional statement is very essential.
+Some of the coding concept require for solving this question are understanding of Arrays, Conditional Statements, Looping strategies, Variable declarations.
+The objective here is to find a number from a sorted array which appeared only once.
+for example. If I have three pairs of shoes but I am able to find only five shoe then I need to find the one which do not have its pair. This could be done
+by taking each shoe and match it with its pair. In the end you will get the answer.
+
+Fixing the algorithm:
+There are various ways to solve this problem.
+The most straightforward way is to loop through the given numbers and check if the two consecutive numbers are equal or not and each time they are equal increse
+the loop size by two otherwise return the answer. Other ways of solving this problem is by Recursive function, Binary Search, etc.
+I am using the recursive function method here as the time compexity of it would be very low.
+
+Answer Explanation:
+The code revolves around the function which returns the number kept at the location given in parameter if it does not matches with the number kept at location next to parameter.
+The if they match the code will call the same function again but increase the parameter by two as we have checked them in this iteration.
+The code will run until the number is found or the parameter value exceeds the number of elements in the array. As in this case we for sure know that all the
+numbers are having a pair.
+
+Complexities:
+1. Time Complexity:
+	To get the time complexity lets devide the process into two Example and work.
+		Example: for a single digit arrya
+				C1 = 1. as only one iteration will give us the required output
+				C3 = 1 + C1. as we will find the output at max in one more iteration than for one digit.
+				C5 = 1 + C3
+				C7 = 1 + C5
+				.
+				.
+				.
+				.
+				Cn = 1+ Cn-2.
+				
+		Work: By the example equation lets find the final exuation
+				Cn = 1+ Cn-2
+					where, Cn-2 = 1 + Cn-4
+				So,
+				Cn = 1+ (1 + Cn-4)
+				Cn = 2 + Cn-4
+				Similarly,
+				Cn = 3 + Cn-6
+				Cn = 4 + Cn-8
+				.
+				.
+				.
+				Cn = n + Cn-n/2
+				Cn = 2n + C1
+				Cn = 2n + 1
+		
+		So the final function would be F(n) = 2n + 1. So, the runtime complexity would be O(n).
+
+2. Space Complexity:
+	As it is the recursive function it would be heavy for space complexity. As the stack frame would be increased in each iteration until the return statement is hit. Because of so many stack storage the 
+	space complexity would be more. Lets denote the Space complexity of the function by S().
+	from given explanation we can predict that,
+	S(n) = S(n - 2) + s(1). 
+	
+			
